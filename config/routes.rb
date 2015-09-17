@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
+  
   get 'welcome/index'
   resources :users
+
+  resources :phone_numbers, only: [:new, :create]
+    post 'phone_numbers/verify' => "phone_numbers#verify"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
